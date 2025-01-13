@@ -1,25 +1,41 @@
-import { useEffect, useState } from 'react';
-import StudentService from '../services/StudentService';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import '../styles.css';
 
-function StudentList() {
+const StudentList = () => {
   const [students, setStudents] = useState([]);
 
   useEffect(() => {
-    StudentService.getStudents().then((response) => {
-      setStudents(response.data);
-    });
+    axios.get('http://localhost:8080/students')
+      .then(response => setStudents(response.data))
+      .catch(error => console.error("Error fetching students:", error));
   }, []);
 
   return (
     <div>
       <h2>Student List</h2>
-      <ul>
-        {students.map((student) => (
-          <li key={student.id}>{student.name} - {student.course}</li>
-        ))}
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          {students.map(student => (
+            <tr key={student.id}>
+              <td>{student.id}</td>
+              <td>{student.name}</td>
+              <td>{student.age}</td>
+              <td>{student.address}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
-}
+};
 
 export default StudentList;

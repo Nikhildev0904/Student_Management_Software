@@ -29,7 +29,7 @@ public class StudentRestController {
         return service.getStudents();
     }
 
-    @PostMapping("students/add")
+    @PostMapping("students")
     public String postMethodName(@RequestBody Student student) {
         
         service.addStudent(student);
