@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import AddStudent from './components/AddStudent';
 import StudentList from './components/StudentList';
+import EditStudent from './components/EditStudent';
 import './styles.css';
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/add-student" element={<AddStudent />} />
           <Route path="/student-list" element={<StudentList />} />
+          <Route path="/edit-student/:id" element={<EditStudent />} />
         </Routes>
       </div>
     </Router>
@@ -27,9 +29,10 @@ const App = () => {
 };
 
 const Home = () => (
-  <div>
+  <div className="home-container">
     <h2>Welcome to the Student Management System</h2>
     <p>Manage student details effectively and efficiently.</p>
+    <Link to="/add-student" className="btn">Add Student</Link>
   </div>
 );
 
