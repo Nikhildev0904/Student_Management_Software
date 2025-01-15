@@ -21,6 +21,14 @@ public class StudentService {
     public void addStudent(Student s){
          repo.save(s);
     }
+
+    public void deleteStudent(int id) {
+         repo.deleteById(id);
+    }
+
+    public List<Student> getStudentByName(String name) {
+       return repo.findByNameContainingIgnoreCase(name);
+    }
     
     
 }

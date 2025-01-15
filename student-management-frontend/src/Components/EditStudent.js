@@ -35,9 +35,9 @@ const EditStudent = () => {
       <h2>Edit Student</h2>
       {message && <p className="success-message">{message}</p>}
       <form onSubmit={handleSubmit}>
-        <input type="text" name="name" value={student.name} onChange={handleChange} required />
-        <input type="number" name="age" value={student.age} onChange={handleChange} required />
-        <input type="text" name="address" value={student.address} onChange={handleChange} required />
+        <input type="text" name="name" placeholder='Name' value={student.name} onChange={handleChange} required />
+        <input type="number" name="age" placeholder='Age' value={student.age} onChange={handleChange} required />
+        <input type="text" name="address" placeholder='Address' value={student.address} onChange={handleChange} required />
         <button type="submit" className="btn">Update Student</button>
       </form>
     </div>

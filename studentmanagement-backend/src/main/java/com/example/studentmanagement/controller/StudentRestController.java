@@ -9,10 +9,13 @@ import com.example.studentmanagement.service.StudentService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
 
 
 
@@ -30,17 +33,32 @@ public class StudentRestController {
     }
 
     @PostMapping("students")
-    public String postMethodName(@RequestBody Student student) {
+    public String addTheStudent(@RequestBody Student student) {
         
         service.addStudent(student);
         return "Added";
        // return service.getStudentByName(student.getName());
     }
 
-    // @GetMapping("students/{name}")
-    // public Student getStudentByName(  String name){
-    //     return service.getStudentByName(name);
-    // }
+    @PutMapping("students/{id}")
+    public String updateTheStudent(@PathVariable int id, @RequestBody Student student) {
+        student.setId(id);
+        service.addStudent(student);
+        return "Success";
+    }
+    
+    @DeleteMapping("students/{id}")
+    public String deleteTheStudent(@PathVariable int id){
+        service.deleteStudent(id);
+        return "Deleted";
+    }
+
+
+
+    @GetMapping("students/{name}")
+     public List<Student> getStudentByName(  String name){
+        return service.getStudentByName(name);
+    }
     
     
     
