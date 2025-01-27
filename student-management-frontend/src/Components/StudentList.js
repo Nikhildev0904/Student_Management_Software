@@ -16,7 +16,7 @@ const StudentList = () => {
 
   // Fetch all students
   const fetchStudents = () => {
-    axios.get('http://localhost:8080/students')
+    axios.get('http://65.1.91.161:8080/students')
       .then(response => setStudents(response.data))
       .catch(error => console.error("Error fetching students:", error));
   };
@@ -24,7 +24,7 @@ const StudentList = () => {
   // Delete a student
   const deleteStudent = (id, name) => {
     if (window.confirm(`Are you sure you want to delete ${name}?`)) {
-      axios.delete(`http://localhost:8080/students/${id}`)
+      axios.delete(`http://65.1.91.161:8080/students/${id}`)
         .then(() => {
           fetchStudents();
           setMessage(`Student "${name}" deleted successfully!`);
@@ -49,7 +49,7 @@ const StudentList = () => {
     if (searchTerm.trim() === '') {
       fetchStudents();  // Show all students if search is empty
     } else {
-      axios.get(`http://localhost:8080/students/search?name=${searchTerm}`)
+      axios.get(`http://65.1.91.161:8080/students/search?name=${searchTerm}`)
         .then(response => setStudents(response.data))
         .catch(error => console.error("Error searching students:", error));
     }

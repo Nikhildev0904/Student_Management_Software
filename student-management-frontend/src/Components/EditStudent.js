@@ -10,7 +10,7 @@ const EditStudent = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/students/${id}`)
+    axios.get(`http://65.1.91.161:8080/students/${id}`)
       .then(response => setStudent(response.data))
       .catch(error => console.error('Error fetching student:', error));
   }, [id]);
@@ -22,7 +22,7 @@ const EditStudent = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.put(`http://localhost:8080/students/${id}`, student)
+    axios.put(`http://65.1.91.161:8080/students/${id}`, student)
       .then(() => {
         setMessage(`Student "${student.name}" updated successfully!`);
         setTimeout(() => navigate('/student-list'), 3000);  // Redirect after 3s

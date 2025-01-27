@@ -18,7 +18,7 @@ const AddStudent = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:8080/students', student)
+    axios.post('http://65.1.91.161:8080/students', student)
       .then(response => {
         setMessage(`Student "${student.name}" added successfully!`);
         setStudent({ id: '', name: '', age: '', address: '' });

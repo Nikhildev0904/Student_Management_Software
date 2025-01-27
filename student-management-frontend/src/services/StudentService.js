@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:8080/students';
+const BASE_URL = 'http://65.1.91.161:8080/students';
+
 
 class StudentService {
   getStudents() {
